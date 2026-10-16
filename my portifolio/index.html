@@ -1,0 +1,948 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Benmash Ouma | Computer Science Portfolio</title>
+
+<style>
+:root {
+  --green: #b9f36a;
+  --green-dark: #416f2d;
+  --dark: #111b18;
+  --light: #f5f7f2;
+  --text: #18231e;
+  --muted: #68746f;
+  --white: #ffffff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  color: var(--text);
+  line-height: 1.7;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.container {
+  width: min(1100px, 90%);
+  margin: auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,.96);
+  border-bottom: 1px solid #e3e8df;
+}
+
+nav {
+  min-height: 75px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo {
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.logo span {
+  color: var(--green-dark);
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  list-style: none;
+}
+
+nav ul a {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+nav ul a:hover {
+  color: var(--green-dark);
+}
+
+.menu {
+  display: none;
+  border: none;
+  background: none;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+section {
+  padding: 85px 0;
+  scroll-margin-top: 70px;
+}
+
+.hero {
+  min-height: 590px;
+  display: flex;
+  align-items: center;
+  background: radial-gradient(circle at 85% 25%, #e7f5dc, transparent 40%), #fbfcf9;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr .8fr;
+  gap: 45px;
+  align-items: center;
+}
+
+.eyebrow {
+  color: var(--green-dark);
+  font-size: 12px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 18px;
+}
+
+h1 {
+  font-size: clamp(40px, 6vw, 68px);
+  line-height: 1.1;
+  letter-spacing: -2px;
+}
+
+h1 span, h2 span {
+  color: var(--green-dark);
+}
+
+.hero h2 {
+  margin: 15px 0;
+  font-size: 25px;
+}
+
+.hero p, .section-description {
+  color: var(--muted);
+}
+
+.hero p {
+  margin: 20px 0;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 25px 0;
+}
+
+.btn {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 7px;
+  font-weight: bold;
+  border: 1px solid #d4ddd0;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+.code-card {
+  background: var(--dark);
+  color: #d9f1dd;
+  padding: 28px;
+  border-radius: 15px;
+  box-shadow: 0 20px 50px #1c332328;
+  overflow-wrap: anywhere;
+}
+
+.code-card h3 {
+  color: var(--green);
+  margin-bottom: 20px;
+}
+
+.code-card pre {
+  white-space: pre-wrap;
+  font-size: 14px;
+  line-height: 2;
+}
+
+.facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  margin-top: 30px;
+}
+
+.facts strong, .facts small {
+  display: block;
+}
+
+.facts small {
+  color: var(--muted);
+}
+
+.light {
+  background: var(--light);
+}
+
+.section-title {
+  font-size: clamp(30px, 4vw, 43px);
+  line-height: 1.2;
+  margin-bottom: 18px;
+}
+
+.section-description {
+  max-width: 650px;
+  margin-bottom: 35px;
+}
+
+.about-grid, .contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 35px;
+}
+
+.about-grid p {
+  margin-bottom: 18px;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.card {
+  padding: 24px;
+  border-radius: 13px;
+  border: 1px solid #e0e7dc;
+  background: white;
+  transition: transform .2s, box-shadow .2s;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px #17261a12;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.card p, .card li {
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.card ul {
+  padding-left: 19px;
+  margin-top: 12px;
+}
+
+.icon {
+  font-size: 27px;
+  margin-bottom: 10px;
+}
+
+.timeline {
+  border-left: 3px solid #a5d47d;
+  padding-left: 25px;
+  display: grid;
+  gap: 24px;
+}
+
+.timeline .card {
+  position: relative;
+}
+
+.timeline .card::before {
+  content: "";
+  position: absolute;
+  left: -36px;
+  top: 25px;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  background: var(--green-dark);
+  border: 3px solid white;
+}
+
+.date {
+  font-size: 12px;
+  color: var(--green-dark);
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin: 15px 0;
+}
+
+.tags span {
+  font-size: 12px;
+  background: #edf5e8;
+  color: #41633a;
+  padding: 5px 9px;
+  border-radius: 5px;
+}
+
+.dark {
+  background: var(--dark);
+  color: white;
+}
+
+.dark .section-description {
+  color: #bdc8c0;
+}
+
+.dark .card {
+  background: #1b2922;
+  border-color: #34453a;
+}
+
+.dark .card p, .dark .card li {
+  color: #c1ccc3;
+}
+
+.dark .card h3 {
+  color: white;
+}
+
+.dark .tags span {
+  background: #2b3c30;
+  color: #d6f5c4;
+}
+
+.notice {
+  padding: 20px;
+  background: #edf7e6;
+  border-radius: 10px;
+  color: #39582f;
+  margin-bottom: 25px;
+}
+
+.project-status {
+  font-size: 11px;
+  color: #78a953;
+  font-weight: bold;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+}
+
+.contact-info p {
+  margin: 18px 0;
+  overflow-wrap: anywhere;
+}
+
+form {
+  background: white;
+  padding: 25px;
+  border-radius: 12px;
+  border: 1px solid #e0e7dc;
+}
+
+form label {
+  display: block;
+  margin: 12px 0 5px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+input, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d5ded1;
+  border-radius: 7px;
+  font: inherit;
+}
+
+textarea {
+  resize: vertical;
+}
+
+input:focus, textarea:focus {
+  outline: 2px solid #c7e8b0;
+  border-color: var(--green-dark);
+}
+
+form button {
+  margin-top: 18px;
+}
+
+footer {
+  background: #0b130f;
+  color: #c1ccc3;
+  padding: 25px 0;
+  text-align: center;
+  font-size: 13px;
+}
+
+footer a {
+  color: var(--green);
+}
+
+@media (max-width: 800px) {
+  .hero-grid, .about-grid, .contact-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 65px 0;
+  }
+
+  .code-card {
+    max-width: 500px;
+  }
+
+  .card-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .menu {
+    display: block;
+  }
+
+  nav {
+    flex-wrap: wrap;
+    padding: 12px 0;
+  }
+
+  nav ul {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0;
+    padding-bottom: 10px;
+  }
+
+  nav ul.open {
+    display: flex;
+  }
+
+  nav ul a {
+    display: block;
+    padding: 8px 0;
+  }
+}
+
+@media (max-width: 520px) {
+  section {
+    padding: 60px 0;
+  }
+
+  .card-grid {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    letter-spacing: -1px;
+  }
+
+  .facts {
+    gap: 18px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <nav class="container">
+    <a href="#home" class="logo">BO<span>.</span></a>
+    <button class="menu" id="menuButton" aria-label="Toggle navigation" aria-expanded="false">☰</button>
+
+    <ul id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#education">Education</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+
+<main>
+
+<section class="hero" id="home">
+  <div class="container hero-grid">
+    <div>
+      <p class="eyebrow">COMPUTER SCIENCE STUDENT · KENYA</p>
+      <h1>Hi, I'm <span>Benmash Ouma.</span></h1>
+      <h2>I build <span id="changingText">useful software.</span></h2>
+
+      <p>
+        I am pursuing a Bachelor of Science in Computer Science at
+        Kirinyaga University. I am passionate about programming,
+        software development, and technology that solves real-world
+        problems. My goal is to become a skilled software developer
+        and contribute to meaningful technology projects.
+      </p>
+
+      <div class="buttons">
+        <a class="btn btn-primary" href="#projects">Explore My Projects ↗</a>
+        <a class="btn" href="#contact">Contact Me</a>
+      </div>
+
+      <div class="facts">
+        <div><strong>2025–2029</strong><small>University journey</small></div>
+        <div><strong>Computer Science</strong><small>Field of study</small></div>
+        <div><strong>Kenya</strong><small>Location</small></div>
+      </div>
+    </div>
+
+    <div class="code-card">
+      <h3>benmash.cpp</h3>
+      <pre>
+#include &lt;iostream&gt;
+
+int main() {
+    std::cout &lt;&lt;
+    "Hello, world!";
+
+    return 0;
+}
+
+// Learn. Build. Improve.
+      </pre>
+    </div>
+  </div>
+</section>
+
+<section id="about" class="light">
+  <div class="container">
+    <p class="eyebrow">ABOUT ME</p>
+    <h2 class="section-title">Curiosity is where <span>progress begins.</span></h2>
+
+    <div class="about-grid">
+      <div>
+        <p>
+          I am an aspiring computer scientist motivated by the opportunity
+          to use technology to solve everyday challenges. I enjoy the
+          combination of logical thinking, creativity, and practical
+          problem-solving involved in software development.
+        </p>
+        <p>
+          At Kirinyaga University, I am building my foundation in
+          programming, algorithms, databases, and computer systems.
+          I am interested in turning ideas into useful and reliable
+          applications.
+        </p>
+        <p>
+          My long-term ambition is to become an experienced software
+          engineer and explore artificial intelligence and robotics.
+          I value teamwork, analytical thinking, adaptability,
+          communication, and continuous learning.
+        </p>
+      </div>
+
+      <div class="card-grid" style="grid-template-columns:1fr 1fr">
+        <article class="card">
+          <div class="icon">⌘</div>
+          <h3>Software Development</h3>
+          <p>Creating applications that address practical needs.</p>
+        </article>
+        <article class="card">
+          <div class="icon">✳</div>
+          <h3>Artificial Intelligence</h3>
+          <p>Exploring intelligent systems and automation.</p>
+        </article>
+        <article class="card">
+          <div class="icon">▤</div>
+          <h3>Web & Databases</h3>
+          <p>Designing websites and organizing information.</p>
+        </article>
+        <article class="card">
+          <div class="icon">◇</div>
+          <h3>Cybersecurity</h3>
+          <p>Learning to develop safer digital systems.</p>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="education">
+  <div class="container">
+    <p class="eyebrow">MY ACADEMIC JOURNEY</p>
+    <h2 class="section-title">Education & <span>growth.</span></h2>
+    <p class="section-description">
+      Every stage of my education has contributed to my development
+      and prepared me for further study in computing.
+    </p>
+
+    <div class="timeline">
+      <article class="card">
+        <p class="date">2025–2029 · EXPECTED</p>
+        <h3>Bachelor of Science in Computer Science</h3>
+        <p><strong>Kirinyaga University, Kenya</strong></p>
+        <p>
+          Developing theoretical knowledge and practical skills for
+          designing, building, testing, and maintaining computer systems.
+        </p>
+        <div class="tags">
+          <span>C Programming</span><span>C++</span>
+          <span>Data Structures</span><span>Algorithms</span>
+          <span>Database Systems</span><span>Web Development</span>
+          <span>Operating Systems</span>
+        </div>
+      </article>
+
+      <article class="card">
+        <p class="date">COMPLETED 2024</p>
+        <h3>Kobala Secondary School</h3>
+        <p><strong>Secondary Education · Grade B-</strong></p>
+        <p>
+          Developed academic discipline and a foundation for university
+          studies. Specific subject strengths can be added when confirmed.
+        </p>
+      </article>
+
+      <article class="card">
+        <p class="date">COMPLETED 2020</p>
+        <h3>Kamwala Primary School</h3>
+        <p><strong>Primary Education · 315 marks</strong></p>
+        <p>An important milestone in my educational journey.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="skills" class="light">
+  <div class="container">
+    <p class="eyebrow">MY TOOLKIT</p>
+    <h2 class="section-title">Skills & <span>technologies.</span></h2>
+    <p class="section-description">
+      My skills are developing through university coursework,
+      programming practice, and independent learning.
+    </p>
+
+    <div class="card-grid">
+      <article class="card">
+        <div class="icon">⌨</div>
+        <h3>Programming Languages</h3>
+        <div class="tags">
+          <span>C</span><span>C++</span><span>Python · Learning</span>
+          <span>JavaScript · Learning</span><span>SQL Basics</span>
+        </div>
+        <p>Programming logic, variables, loops, functions, and arrays.</p>
+      </article>
+
+      <article class="card">
+        <div class="icon">▧</div>
+        <h3>Web Technologies</h3>
+        <div class="tags">
+          <span>HTML5</span><span>CSS3</span>
+          <span>JavaScript · Learning</span><span>React · Future Goal</span>
+        </div>
+        <p>Building web pages, styling layouts, and exploring interactivity.</p>
+      </article>
+
+      <article class="card">
+        <div class="icon">▤</div>
+        <h3>Databases</h3>
+        <div class="tags">
+          <span>MySQL</span><span>SQL</span>
+          <span>PostgreSQL · Future Goal</span><span>MongoDB · Future Goal</span>
+        </div>
+        <p>Relational tables, queries, and structured data management.</p>
+      </article>
+
+      <article class="card">
+        <div class="icon">⚙</div>
+        <h3>Tools & Platforms</h3>
+        <div class="tags">
+          <span>VS Code</span><span>Code::Blocks</span>
+          <span>Git · Learning</span><span>GitHub</span>
+          <span>Linux · Future Goal</span>
+        </div>
+        <p>Writing, compiling, organizing, and managing source code.</p>
+      </article>
+
+      <article class="card">
+        <div class="icon">⌬</div>
+        <h3>Computer Science Concepts</h3>
+        <div class="tags">
+          <span>Algorithms</span><span>Data Structures</span>
+          <span>OOP Fundamentals</span><span>Debugging</span><span>Testing</span>
+        </div>
+        <p>Breaking problems into steps and checking solutions.</p>
+      </article>
+
+      <article class="card">
+        <div class="icon">✧</div>
+        <h3>Soft Skills</h3>
+        <div class="tags">
+          <span>Teamwork</span><span>Communication</span>
+          <span>Critical Thinking</span><span>Adaptability</span>
+          <span>Time Management</span>
+        </div>
+        <p>Collaborating, learning from feedback, and managing tasks.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <p class="eyebrow">PROFESSIONAL DEVELOPMENT</p>
+    <h2 class="section-title">Experience & <span>opportunities.</span></h2>
+
+    <p class="section-description">
+      I am seeking opportunities to gain practical experience,
+      learn from experienced developers, and contribute to real projects.
+    </p>
+
+    <div class="notice">
+      <strong>Currently open to:</strong> Software development internships,
+      industrial attachment, mentorship, and collaborative student projects.
+    </div>
+
+    <div class="card-grid">
+      <article class="card">
+        <p class="date">TARGET ROLE</p>
+        <h3>Software Development Intern</h3>
+        <p><strong>Organization:</strong> To be confirmed</p>
+        <p><strong>Dates:</strong> To be confirmed</p>
+        <ul>
+          <li>Assist with application development and testing.</li>
+          <li>Practise debugging and documenting code.</li>
+          <li>Learn version control and team workflows.</li>
+        </ul>
+        <p><small>Example responsibilities for a future placement.</small></p>
+      </article>
+
+      <article class="card">
+        <p class="date">VOLUNTEERING GOAL</p>
+        <h3>IT Support Volunteer</h3>
+        <p><strong>Organization:</strong> To be arranged</p>
+        <p><strong>Dates:</strong> To be confirmed</p>
+        <ul>
+          <li>Assist users with common computer issues.</li>
+          <li>Document technical problems and solutions.</li>
+          <li>Support responsible equipment use.</li>
+        </ul>
+        <p><small>Add as experience after completing the activity.</small></p>
+      </article>
+
+      <article class="card">
+        <p class="date">COLLABORATION GOAL</p>
+        <h3>University Technology Club</h3>
+        <p><strong>Organization:</strong> To be confirmed</p>
+        <p><strong>Dates:</strong> To be confirmed</p>
+        <ul>
+          <li>Participate in peer-learning activities.</li>
+          <li>Collaborate on small software projects.</li>
+          <li>Learn from fellow computing students.</li>
+        </ul>
+        <p><small>Replace with actual club participation.</small></p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="projects" class="dark">
+  <div class="container">
+    <p class="eyebrow">MY PROJECTS</p>
+    <h2 class="section-title">Ideas into <span>solutions.</span></h2>
+    <p class="section-description">
+      These are proposed projects. Add repository links and mark them
+      as completed only after you have built and tested them.
+    </p>
+
+    <div class="card-grid">
+      <article class="card">
+        <p class="project-status">PROPOSED PROJECT 01</p>
+        <h3>Student Record Management System</h3>
+        <p>
+          An application for organizing student names, registration
+          numbers, courses, and academic records.
+        </p>
+        <div class="tags"><span>C++</span><span>MySQL</span></div>
+        <ul>
+          <li>Add, search, update, and delete records.</li>
+          <li>Validate inputs and organize information.</li>
+          <li>Practise database connectivity.</li>
+        </ul>
+        <p><strong>GitHub:</strong> Add repository link</p>
+      </article>
+
+      <article class="card">
+        <p class="project-status">PROPOSED PROJECT 02</p>
+        <h3>Personal Portfolio Website</h3>
+        <p>
+          A responsive website presenting my education, skills,
+          interests, projects, and professional contact details.
+        </p>
+        <div class="tags"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+        <ul>
+          <li>Support mobile and desktop screens.</li>
+          <li>Provide interactive navigation.</li>
+          <li>Publish and maintain the website.</li>
+        </ul>
+        <p><strong>Live website:</strong> Add link</p>
+        <p><strong>GitHub:</strong> Add repository link</p>
+      </article>
+
+      <article class="card">
+        <p class="project-status">PROPOSED PROJECT 03</p>
+        <h3>Hotel Management System</h3>
+        <p>
+          A system concept for organizing hotel rooms, customer
+          records, reservations, and payment information.
+        </p>
+        <div class="tags"><span>C++</span><span>MySQL</span></div>
+        <ul>
+          <li>Track rooms and room availability.</li>
+          <li>Register bookings and calculate totals.</li>
+          <li>Generate basic management summaries.</li>
+        </ul>
+        <p><strong>GitHub:</strong> Add repository link</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="light">
+  <div class="container">
+    <p class="eyebrow">LET'S CONNECT</p>
+    <h2 class="section-title">Let's build <span>something useful.</span></h2>
+    <p class="section-description">
+      I welcome conversations about internships, industrial attachment,
+      mentorship, technology, and collaborative projects.
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-info">
+        <h3>Contact Information</h3>
+        <p><strong>Name:</strong> Benmash Ouma</p>
+        <p><strong>Location:</strong> Kenya</p>
+        <p><strong>Email:</strong>
+          <a href="mailto:benmarshouma@gmail.com">benmarshouma@gmail.com</a>
+        </p>
+        <p><strong>GitHub:</strong>
+          <a href="https://github.com/Marsh001" target="_blank" rel="noopener noreferrer">github.com/Marsh001 ↗</a>
+        </p>
+        <p><strong>LinkedIn:</strong> Benmarsh Ouma</p>
+        <p><strong>Phone:</strong> +254791841198</p>
+        <p><strong>+254752669206</strong></p>
+      </div>
+
+      <form id="contactForm">
+        <h3>Send a message</h3>
+        <p>This form prepares a message in your email application.</p>
+
+        <label for="name">Your name</label>
+        <input id="name" type="text" placeholder="Enter your name" required>
+
+        <label for="email">Your email</label>
+        <input id="email" type="email" placeholder="you@example.com" required>
+
+        <label for="message">Your message</label>
+        <textarea id="message" rows="5" placeholder="Write your message..." required></textarea>
+
+        <button type="submit" class="btn btn-primary">Prepare Email ↗</button>
+        <p id="formStatus" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="container">
+    <p>© <span id="year"></span> Benmash Ouma. Built with HTML, CSS & JavaScript.</p>
+    <p>Learn continuously. Solve problems. Build for the future.</p>
+    <p><a href="#home">Back to top ↑</a></p>
+  </div>
+</footer>
+
+<script>
+// Mobile navigation
+const menuButton = document.getElementById("menuButton");
+const navLinks = document.getElementById("navLinks");
+
+menuButton.addEventListener("click", function () {
+  const opened = navLinks.classList.toggle("open");
+  menuButton.setAttribute("aria-expanded", String(opened));
+  menuButton.textContent = opened ? "✕" : "☰";
+});
+
+navLinks.querySelectorAll("a").forEach(function (link) {
+  link.addEventListener("click", function () {
+    navLinks.classList.remove("open");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.textContent = "☰";
+  });
+});
+
+// Rotating homepage headline
+const phrases = [
+  "useful software.",
+  "smart solutions.",
+  "a better future."
+];
+
+let phraseIndex = 0;
+const changingText = document.getElementById("changingText");
+
+setInterval(function () {
+  phraseIndex = (phraseIndex + 1) % phrases.length;
+  changingText.textContent = phrases[phraseIndex];
+}, 2500);
+
+// Automatically update the footer year
+document.getElementById("year").textContent = new Date().getFullYear();
+
+// Contact form: prepare an email; no server is required.
+document.getElementById("contactForm").addEventListener("submit", function (event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const message = document.getElementById("message").value.trim();
+  const status = document.getElementById("formStatus");
+
+  if (!name || !email || !message) {
+    status.textContent = "Please complete all fields.";
+    return;
+  }
+
+  const subject = encodeURIComponent("Portfolio enquiry from " + name);
+  const body = encodeURIComponent(
+    "Name: " + name + "\nEmail: " + email + "\n\n" + message
+  );
+
+  status.textContent = "Opening your default email application...";
+  window.location.href =
+    "mailto:benmarshouma@gmail.com?subject=" + subject + "&body=" + body;
+});
+</script>
+
+</body>
+</html>
